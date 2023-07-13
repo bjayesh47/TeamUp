@@ -4,4 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="app_light_blue">#FF00D4FF</color>
     <color name="app_dark_blue">#FF130A9E</color>
+    <color name="app_primary_text_color">#FF363A43</color>
+    <color name="app_secondary_text_color">#FF7A8089</color>
 </resources>

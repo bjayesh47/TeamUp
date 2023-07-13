@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Team Up</string>
+
+    <string name="intro_screen_heading">Let\'s Get Started</string>
+    <string name="intro_screen_body">Maximize Productivity\nStreamline Workflow\nStay Organized</string>
+    <string name="intro_screen_sign_in">Sign In</string>
+    <string name="intro_screen_sign_up">Sign Up</string>
+
 </resources>

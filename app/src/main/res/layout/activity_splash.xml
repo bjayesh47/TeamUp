@@ -14,7 +14,7 @@
         app:layout_constraintBottom_toTopOf="@id/tvTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="@dimen/app_primary_margin"
         android:src="@drawable/app_icon"
         app:tint="@color/white"
         android:scaleX="2"

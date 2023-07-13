@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="splash_screen_title_text_size">72sp</dimen>
+
+    <dimen name="intro_screen_title_text_size">48sp</dimen>
+    <dimen name="intro_screen_heading_text_size">36sp</dimen>
+    <dimen name="intro_screen_body_text_size">24sp</dimen>
+
+    <dimen name="app_button_radius">12dp</dimen>
+    <dimen name="app_primary_margin">16dp</dimen>
+    <dimen name="app_secondary_margin">8dp</dimen>
+    <dimen name="app_stroke_width">2dp</dimen>
 </resources>
