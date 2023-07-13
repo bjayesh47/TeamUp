@@ -32,8 +32,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginBottom="@dimen/app_secondary_margin"
             android:src="@drawable/app_icon"
-            android:elevation="0dp"
-            app:tint="@color/app_dark_blue"/>
+            app:tint="@color/app_mid_blue"/>
 
         <TextView
             android:id="@+id/tvTitle"
@@ -44,10 +43,9 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/cgScreenMiddle"
             android:text="@string/app_name"
-            android:textColor="@color/app_dark_blue"
             android:textStyle="bold"
             android:textSize="@dimen/intro_screen_title_text_size"
-            android:fontFamily="@font/alegreya_sans"/>
+            android:fontFamily="@font/alegreya_sans" />
 
     </LinearLayout>
 
@@ -90,33 +88,52 @@
         android:layout_marginHorizontal="@dimen/app_primary_margin"
         android:layout_marginBottom="@dimen/app_primary_margin">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnSignIn"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clSignIn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/app_primary_margin"
-            android:text="@string/intro_screen_sign_in"
-            android:textSize="@dimen/intro_screen_body_text_size"
-            android:fontFamily="@font/alegreya_sans"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:stateListAnimator="@null"
-            android:elevation="0dp"
-            android:background="@drawable/app_primary_button"/>
+            android:background="@drawable/app_primary_button">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnSignUp"
+            <TextView
+                android:id="@+id/tvSignIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginVertical="@dimen/app_secondary_margin"
+                android:text="@string/intro_screen_sign_in"
+                android:textSize="@dimen/intro_screen_body_text_size"
+                android:fontFamily="@font/alegreya_sans"
+                android:textStyle="bold"
+                android:textColor="@color/white"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/intro_screen_sign_up"
-            android:textSize="@dimen/intro_screen_body_text_size"
-            android:fontFamily="@font/alegreya_sans"
-            android:textStyle="bold"
-            android:textColor="@color/app_dark_blue"
-            android:stateListAnimator="@null"
-            android:elevation="0dp"
-            android:background="@drawable/app_secondary_button"/>
+            android:layout_marginBottom="@dimen/app_primary_margin"
+            android:background="@drawable/app_secondary_button">
 
+            <TextView
+                android:id="@+id/tvSignUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginVertical="@dimen/app_secondary_margin"
+                android:text="@string/intro_screen_sign_up"
+                android:textSize="@dimen/intro_screen_body_text_size"
+                android:fontFamily="@font/alegreya_sans"
+                android:textStyle="bold"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
