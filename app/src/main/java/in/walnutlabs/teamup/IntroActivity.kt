@@ -1,5 +1,6 @@
 package `in`.walnutlabs.teamup
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.LinearGradient
 import android.graphics.Shader
@@ -9,6 +10,7 @@ import android.view.WindowManager
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
+import androidx.constraintlayout.widget.ConstraintLayout
 
 
 class IntroActivity : AppCompatActivity() {
@@ -20,6 +22,10 @@ class IntroActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
+
+        findViewById<ConstraintLayout>(R.id.clSignUp).setOnClickListener {
+            startActivity(Intent(this, SignUpActivity::class.java))
+        }
 
         setShader(findViewById(R.id.tvTitle))
         setShader(findViewById(R.id.tvSignUp))

@@ -6,4 +6,11 @@
     <string name="intro_screen_sign_in">Sign In</string>
     <string name="intro_screen_sign_up">Sign Up</string>
 
+    <string name="sign_up_screen_heading">Enter Your Details To Create Account</string>
+    <string name="sign_up_screen_name">Name</string>
+    <string name="sign_up_screen_email">Email</string>
+    <string name="sign_up_screen_password">Password</string>
+    <string name="sign_up_screen_create_account">Create Account</string>
+    <string name="sign_up_screen_toolbar_title">Sign Up</string>
+
 </resources>
