@@ -1,16 +1,34 @@
 <resources>
     <string name="app_name">Team Up</string>
 
+    <string name="progress_dialog_wait">Please Wait</string>
+    <string name="progress_dialog_exit">Press Again To Exit</string>
+
+    <string name="toast_exit">Please Click Back Again To Exit</string>
+    <string name="toast_account_creation_successful">Account Created Successfully</string>
+
+    <string name="missing_field_name">Name can\'t be empty.</string>
+    <string name="missing_field_email">Email can\'t be empty.</string>
+    <string name="missing_field_password">Password can\'t be empty.</string>
+
+    <string name="incorrect_field_name">Name not in correct format.</string>
+    <string name="incorrect_field_email">Email not in correct format.</string>
+
     <string name="intro_screen_heading">Let\'s Get Started</string>
     <string name="intro_screen_body">Maximize Productivity\nStreamline Workflow\nStay Organized</string>
     <string name="intro_screen_sign_in">Sign In</string>
     <string name="intro_screen_sign_up">Sign Up</string>
 
-    <string name="sign_up_screen_heading">Enter Your Details To Create Account</string>
+    <string name="sign_up_screen_heading">Enter Your Details To Create Account &amp; Register With Us</string>
     <string name="sign_up_screen_name">Name</string>
     <string name="sign_up_screen_email">Email</string>
     <string name="sign_up_screen_password">Password</string>
     <string name="sign_up_screen_create_account">Create Account</string>
     <string name="sign_up_screen_toolbar_title">Sign Up</string>
 
+    <string name="sign_in_screen_heading">Enter Your Details To Log In</string>
+    <string name="sign_in_screen_email">Email</string>
+    <string name="sign_in_screen_password">Password</string>
+    <string name="sign_in_screen_create_account">Sign In</string>
+    <string name="sign_in_screen_toolbar_title">Sign In</string>
 </resources>

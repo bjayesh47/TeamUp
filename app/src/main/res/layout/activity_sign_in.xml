@@ -5,31 +5,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.SignUpActivity">
+    tools:context=".activities.SignInActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tbSignUpActivity"
+        android:id="@+id/tbSignInActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="@string/sign_up_screen_toolbar_title"/>
-    
+        app:title="@string/sign_in_screen_toolbar_title"/>
+
     <TextView
         android:id="@+id/tvHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tbSignUpActivity"
+        app:layout_constraintTop_toBottomOf="@id/tbSignInActivity"
         android:layout_marginTop="@dimen/app_primary_margin"
         android:layout_marginHorizontal="@dimen/app_primary_margin"
-        android:text="@string/sign_up_screen_heading"
+        android:text="@string/sign_in_screen_heading"
         android:textAlignment="center"
         android:fontFamily="@font/alegreya_sans"
-        android:textSize="@dimen/sign_up_screen_heading_text_size"/>
-    
+        android:textSize="@dimen/sign_in_screen_heading_text_size"/>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cvDetailsCard"
         android:layout_width="match_parent"
@@ -49,30 +49,21 @@
             android:padding="@dimen/app_secondary_padding">
 
             <EditText
-                android:id="@+id/etNameInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/sign_up_screen_body_text_size"
-                android:fontFamily="@font/alegreya_sans"
-                android:hint="@string/sign_up_screen_name"
-                android:layout_marginBottom="@dimen/app_secondary_margin"/>
-
-            <EditText
                 android:id="@+id/etEmailInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/sign_up_screen_body_text_size"
+                android:textSize="@dimen/sign_in_screen_body_text_size"
                 android:fontFamily="@font/alegreya_sans"
-                android:hint="@string/sign_up_screen_email"
+                android:hint="@string/sign_in_screen_email"
                 android:layout_marginBottom="@dimen/app_secondary_margin"/>
 
             <EditText
                 android:id="@+id/etPasswordInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/sign_up_screen_body_text_size"
+                android:textSize="@dimen/sign_in_screen_body_text_size"
                 android:fontFamily="@font/alegreya_sans"
-                android:hint="@string/sign_up_screen_password"
+                android:hint="@string/sign_in_screen_password"
                 android:layout_marginBottom="@dimen/app_primary_margin"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -91,8 +82,8 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:layout_marginVertical="@dimen/app_secondary_margin"
-                    android:text="@string/sign_up_screen_create_account"
-                    android:textSize="@dimen/sign_up_screen_body_text_size"
+                    android:text="@string/sign_in_screen_create_account"
+                    android:textSize="@dimen/sign_in_screen_body_text_size"
                     android:fontFamily="@font/alegreya_sans"
                     android:textStyle="bold"
                     android:textColor="@color/white"/>

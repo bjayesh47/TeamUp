@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "734866448438",
+    "project_id": "team-up-536b6",
+    "storage_bucket": "team-up-536b6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:734866448438:android:0f26c86d11cf9b184df897",
+        "android_client_info": {
+          "package_name": "in.walnutlabs.teamup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "734866448438-n3bhjsoi7tiav4ps6roo0ahdhok7lco0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUfbILxV7YxhTi_Cqa_fYSIuiqwO_daP4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "734866448438-n3bhjsoi7tiav4ps6roo0ahdhok7lco0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

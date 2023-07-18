@@ -1,14 +1,15 @@
-package `in`.walnutlabs.teamup
+package `in`.walnutlabs.teamup.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.widget.Toolbar
+import `in`.walnutlabs.teamup.R
 
-class SignUpActivity : AppCompatActivity() {
+class SignInActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
+        setContentView(R.layout.activity_sign_in)
 
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -19,7 +20,7 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun setupActionBar() {
-        val toolbar: Toolbar = findViewById<Toolbar>(R.id.tbSignUpActivity)
+        val toolbar: Toolbar = findViewById<Toolbar>(R.id.tbSignInActivity)
         setSupportActionBar(toolbar)
         val actionBar = supportActionBar
 

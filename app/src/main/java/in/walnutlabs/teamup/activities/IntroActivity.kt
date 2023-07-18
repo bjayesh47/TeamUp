@@ -1,19 +1,17 @@
-package `in`.walnutlabs.teamup
+package `in`.walnutlabs.teamup.activities
 
 import android.content.Intent
-import android.graphics.Color
 import android.graphics.LinearGradient
-import android.graphics.Shader
 import android.graphics.Shader.TileMode
 import android.os.Bundle
 import android.view.WindowManager
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatButton
 import androidx.constraintlayout.widget.ConstraintLayout
+import `in`.walnutlabs.teamup.R
 
 
-class IntroActivity : AppCompatActivity() {
+class IntroActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro)
@@ -25,6 +23,10 @@ class IntroActivity : AppCompatActivity() {
 
         findViewById<ConstraintLayout>(R.id.clSignUp).setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
+        }
+
+        findViewById<ConstraintLayout>(R.id.clSignIn).setOnClickListener {
+            startActivity(Intent(this, SignInActivity::class.java))
         }
 
         setShader(findViewById(R.id.tvTitle))
