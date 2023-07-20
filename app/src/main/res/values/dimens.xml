@@ -15,6 +15,11 @@
     <dimen name="progress_bar_size">48dp</dimen>
     <dimen name="progress_bar_text_size">24sp</dimen>
 
+    <dimen name="nav_drawer_profile_pic_radius">80dp</dimen>
+    <dimen name="nav_drawer_profile_pic_border_width">1dp</dimen>
+    <dimen name="nav_drawer_margin_top">40dp</dimen>
+    <dimen name="nav_drawer_profile_name_text_size">20sp</dimen>
+
     <dimen name="app_button_radius">12dp</dimen>
     <dimen name="app_primary_margin">16dp</dimen>
     <dimen name="app_secondary_margin">8dp</dimen>

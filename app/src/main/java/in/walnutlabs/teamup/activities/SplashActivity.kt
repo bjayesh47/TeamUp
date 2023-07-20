@@ -25,6 +25,7 @@ class SplashActivity:BaseActivity() {
             else {
                 startActivity(Intent(this@SplashActivity, IntroActivity::class.java))
             }
+            finish()
         }, 1000)
     }
 }

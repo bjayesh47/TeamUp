@@ -1,4 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Base.Theme.TeamUp" parent="Theme.Material3.DayNight.NoActionBar"/>
+    <style name="Base.Theme.TeamUp" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#FF096AE4</item>
+    </style>
     <style name="Theme.TeamUp" parent="Base.Theme.TeamUp" />
+    <style name="Theme.TeamUp.Overlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="Theme.TeamUp.PopUpOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="Style_TextView">
+        <item name="fontFamily">@font/alegreya_sans</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
 </resources>

@@ -7,6 +7,8 @@
     <string name="toast_exit">Please Click Back Again To Exit</string>
     <string name="toast_account_creation_successful">Account Created Successfully</string>
 
+    <string name="content_description_profile_picture">Profile Picture</string>
+
     <string name="missing_field_name">Name can\'t be empty.</string>
     <string name="missing_field_email">Email can\'t be empty.</string>
     <string name="missing_field_password">Password can\'t be empty.</string>
@@ -31,4 +33,7 @@
     <string name="sign_in_screen_password">Password</string>
     <string name="sign_in_screen_create_account">Sign In</string>
     <string name="sign_in_screen_toolbar_title">Sign In</string>
+
+    <string name="nav_drawer_profile_title">My Profile</string>
+    <string name="nav_drawer_sign_out_title">Sign Out</string>
 </resources>
