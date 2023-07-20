@@ -6,6 +6,7 @@ import android.os.Handler
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import `in`.walnutlabs.teamup.R
+import `in`.walnutlabs.teamup.firebase.FireStore
 
 class SplashActivity:BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,12 +19,12 @@ class SplashActivity:BaseActivity() {
         )
 
         Handler().postDelayed({
-            startActivity(
-                Intent(
-                    this,
-                    IntroActivity::class.java
-                )
-            )
+            if (FireStore().getCurrentUserID().isNotEmpty()) {
+                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+            }
+            else {
+                startActivity(Intent(this@SplashActivity, IntroActivity::class.java))
+            }
         }, 1000)
     }
 }

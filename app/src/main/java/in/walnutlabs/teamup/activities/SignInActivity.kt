@@ -10,6 +10,8 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import `in`.walnutlabs.teamup.R
+import `in`.walnutlabs.teamup.firebase.FireStore
+import `in`.walnutlabs.teamup.models.User
 
 class SignInActivity : BaseActivity() {
     private lateinit var auth: FirebaseAuth
@@ -42,8 +44,7 @@ class SignInActivity : BaseActivity() {
                 .addOnCompleteListener { taskResult ->
                     hideProgressDialog()
                     if (taskResult.isSuccessful) {
-                        val user: FirebaseUser? = auth.currentUser
-                        startActivity(Intent(this@SignInActivity, MainActivity::class.java))
+                        FireStore().signInUser(this@SignInActivity)
                     }
                     else {
                         taskResult.exception!!.message?.let { showErrorSnackBar(it) }
@@ -63,5 +64,10 @@ class SignInActivity : BaseActivity() {
         }
 
         toolbar.setNavigationOnClickListener { onBackPressed() }
+    }
+
+    fun signInSuccess(user: User) {
+        startActivity(Intent(this@SignInActivity, MainActivity::class.java))
+        finish()
     }
 }
