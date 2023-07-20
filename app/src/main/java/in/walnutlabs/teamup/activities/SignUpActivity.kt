@@ -1,17 +1,16 @@
 package `in`.walnutlabs.teamup.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.WindowManager
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import `in`.walnutlabs.teamup.R
+import `in`.walnutlabs.teamup.firebase.FireStore
+import `in`.walnutlabs.teamup.models.User
 
 class SignUpActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,7 +49,7 @@ class SignUpActivity : BaseActivity() {
         val password: String = findViewById<EditText>(R.id.etPasswordInput)
             .text.toString().trim { it <= ' ' }
 
-        if (validateForm(name, email, password)) {
+        if (validateSignUp(name, email, password)) {
             showProgressDialog(resources.getString(R.string.progress_dialog_wait))
             FirebaseAuth
                 .getInstance()
@@ -60,13 +59,8 @@ class SignUpActivity : BaseActivity() {
                     if (task.isSuccessful) {
                         val firebaseUser: FirebaseUser = task.result!!.user!!
                         val registeredEmail: String = firebaseUser.email!!
-                        Toast.makeText(
-                            this,
-                            resources.getString(R.string.toast_account_creation_successful),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        FirebaseAuth.getInstance().signOut()
-                        finish()
+                        val user = User(firebaseUser.uid, name, email)
+                        FireStore().registerUser(this@SignUpActivity, user)
                     }
                     else {
                         task.exception!!.message?.let { showErrorSnackBar(it) }
@@ -74,51 +68,14 @@ class SignUpActivity : BaseActivity() {
                 }
         }
     }
-    private fun validateForm(
-        name: String,
-        email: String,
-        password: String
-    ): Boolean {
-        return when {
-            TextUtils.isEmpty(name) -> {
-                showErrorSnackBar(resources.getString(R.string.missing_field_name))
-                false
-            }
-            TextUtils.isEmpty(email) -> {
-                showErrorSnackBar(resources.getString(R.string.missing_field_email))
-                false
-            }
-            TextUtils.isEmpty(password) -> {
-                showErrorSnackBar(resources.getString(R.string.missing_field_password))
-                false
-            }
-            !checkName(name) -> {
-                showErrorSnackBar(resources.getString(R.string.incorrect_field_name))
-                false
-            }
-            !checkEmail(email) -> {
-                showErrorSnackBar(resources.getString(R.string.incorrect_field_email))
-                false
-            }
-            else -> true
-        }
-    }
 
-    private fun checkName(name: String): Boolean {
-        if (name.length in 3..20) {
-            for (char in name) {
-                if (char !in 'a'..'z' && char !in 'A'..'Z')
-                    return false
-            }
-            return true
-        }
-        return false
-    }
-
-    private fun checkEmail(email: String): Boolean {
-        val pattern: String = "[a-z0-9]+@[a-z]+.[a-z]{2,3}"
-        val regex: Regex = Regex(pattern)
-
-        return email.matches(regex)
+    fun registerUserSuccess() {
+        Toast.makeText(
+            this,
+            resources.getString(R.string.toast_account_creation_successful),
+            Toast.LENGTH_SHORT
+        ).show()
+        FirebaseAuth.getInstance().signOut()
+        finish()
     }
 }

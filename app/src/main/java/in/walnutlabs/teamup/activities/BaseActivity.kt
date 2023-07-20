@@ -1,18 +1,14 @@
 package `in`.walnutlabs.teamup.activities
 
 import android.app.Dialog
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.os.Message
+import android.text.TextUtils
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContextCompat
-import com.google.android.material.internal.ContextUtils.getActivity
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
 import `in`.walnutlabs.teamup.R
 
 open class BaseActivity : AppCompatActivity() {
@@ -67,5 +63,74 @@ open class BaseActivity : AppCompatActivity() {
             Snackbar.LENGTH_LONG)
         snackBar.setBackgroundTint(resources.getColor(R.color.snack_bar_error))
         snackBar.show()
+    }
+
+    protected fun validateSignUp(
+        name: String,
+        email: String,
+        password: String
+    ): Boolean {
+        return when {
+            TextUtils.isEmpty(name) -> {
+                showErrorSnackBar(resources.getString(R.string.missing_field_name))
+                false
+            }
+            TextUtils.isEmpty(email) -> {
+                showErrorSnackBar(resources.getString(R.string.missing_field_email))
+                false
+            }
+            TextUtils.isEmpty(password) -> {
+                showErrorSnackBar(resources.getString(R.string.missing_field_password))
+                false
+            }
+            !checkName(name) -> {
+                showErrorSnackBar(resources.getString(R.string.incorrect_field_name))
+                false
+            }
+            !checkEmail(email) -> {
+                showErrorSnackBar(resources.getString(R.string.incorrect_field_email))
+                false
+            }
+            else -> true
+        }
+    }
+
+    protected fun validateSignIn(
+        email: String,
+        password: String
+    ): Boolean {
+        return when {
+            TextUtils.isEmpty(email) -> {
+                showErrorSnackBar(resources.getString(R.string.missing_field_email))
+                false
+            }
+            TextUtils.isEmpty(password) -> {
+                showErrorSnackBar(resources.getString(R.string.missing_field_password))
+                false
+            }
+            !checkEmail(email) -> {
+                showErrorSnackBar(resources.getString(R.string.incorrect_field_email))
+                false
+            }
+            else -> true
+        }
+    }
+
+    private fun checkName(name: String): Boolean {
+        if (name.length in 3..20) {
+            for (char in name) {
+                if (char !in 'a'..'z' && char !in 'A'..'Z')
+                    return false
+            }
+            return true
+        }
+        return false
+    }
+
+    private fun checkEmail(email: String): Boolean {
+        val pattern: String = "[a-z0-9]+@[a-z]+.[a-z]{2,3}"
+        val regex: Regex = Regex(pattern)
+
+        return email.matches(regex)
     }
 }

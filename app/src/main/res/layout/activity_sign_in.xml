@@ -67,14 +67,14 @@
                 android:layout_marginBottom="@dimen/app_primary_margin"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/clCreateAccount"
+                android:id="@+id/clSignIn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/app_secondary_margin"
                 android:background="@drawable/app_primary_button">
 
                 <TextView
-                    android:id="@+id/tvCreateAccount"
+                    android:id="@+id/tvSignIn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
