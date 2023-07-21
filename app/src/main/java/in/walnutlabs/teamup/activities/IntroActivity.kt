@@ -23,10 +23,12 @@ class IntroActivity : BaseActivity() {
 
         findViewById<ConstraintLayout>(R.id.clSignUp).setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
+            finish()
         }
 
         findViewById<ConstraintLayout>(R.id.clSignIn).setOnClickListener {
             startActivity(Intent(this, SignInActivity::class.java))
+            finish()
         }
 
         setShader(findViewById(R.id.tvTitle))
