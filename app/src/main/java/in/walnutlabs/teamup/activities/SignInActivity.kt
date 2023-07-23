@@ -4,11 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import `in`.walnutlabs.teamup.R
 import `in`.walnutlabs.teamup.firebase.FireStore
 import `in`.walnutlabs.teamup.models.User
@@ -44,7 +42,7 @@ class SignInActivity : BaseActivity() {
                 .addOnCompleteListener { taskResult ->
                     hideProgressDialog()
                     if (taskResult.isSuccessful) {
-                        FireStore().signInUser(this@SignInActivity)
+                        FireStore().loadUser(this@SignInActivity)
                     }
                     else {
                         taskResult.exception!!.message?.let { showErrorSnackBar(it) }

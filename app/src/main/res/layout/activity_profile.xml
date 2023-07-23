@@ -5,38 +5,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.SignUpActivity">
+    tools:context=".activities.ProfileActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tbSignUpActivity"
+        android:id="@+id/tbProfileActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="@string/sign_up_screen_toolbar_title"/>
-    
-    <TextView
-        android:id="@+id/tvHeading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tbSignUpActivity"
-        android:layout_marginTop="@dimen/app_primary_margin"
-        android:layout_marginHorizontal="@dimen/app_primary_margin"
-        android:text="@string/sign_up_screen_heading"
-        android:textAlignment="center"
-        android:fontFamily="@font/alegreya_sans"
-        android:textSize="@dimen/sign_up_screen_heading_text_size"/>
-    
+        android:background="@color/app_mid_blue"
+        app:title="@string/profile_screen_toolbar_title"
+        app:titleTextColor="@color/white"/>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cvDetailsCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvHeading"
+        app:layout_constraintTop_toBottomOf="@id/tbProfileActivity"
         android:layout_marginTop="@dimen/app_primary_margin"
         android:layout_marginHorizontal="@dimen/app_primary_margin"
         android:padding="@dimen/app_secondary_padding"
@@ -48,6 +36,15 @@
             android:orientation="vertical"
             android:padding="@dimen/app_secondary_padding">
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civProfilePic"
+                android:layout_width="@dimen/profile_screen_image_radius"
+                android:layout_height="@dimen/profile_screen_image_radius"
+                android:layout_marginVertical="@dimen/profile_screen_image_margin_top"
+                app:civ_border_color="@color/app_mid_blue"
+                android:layout_gravity="center_horizontal"
+                app:civ_border_width="@dimen/nav_drawer_profile_pic_border_width" />
+
             <EditText
                 android:id="@+id/etNameInput"
                 android:layout_width="match_parent"
@@ -55,38 +52,40 @@
                 android:inputType="textPersonName"
                 android:textSize="@dimen/sign_up_screen_body_text_size"
                 android:fontFamily="@font/alegreya_sans"
-                android:hint="@string/sign_up_screen_name"
-                android:layout_marginBottom="@dimen/app_secondary_margin"/>
+                android:hint="@string/profile_screen_name"
+                android:layout_marginBottom="@dimen/app_secondary_margin" />
 
             <EditText
                 android:id="@+id/etEmailInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/app_secondary_margin"
+                android:focusableInTouchMode="false"
                 android:inputType="textEmailAddress"
                 android:textSize="@dimen/sign_up_screen_body_text_size"
+                android:textColor="@color/app_secondary_text_color"
                 android:fontFamily="@font/alegreya_sans"
-                android:hint="@string/sign_up_screen_email"
-                android:layout_marginBottom="@dimen/app_secondary_margin"/>
+                android:hint="@string/profile_screen_email" />
 
             <EditText
-                android:id="@+id/etPasswordInput"
+                android:id="@+id/etBioInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:textSize="@dimen/sign_up_screen_body_text_size"
                 android:fontFamily="@font/alegreya_sans"
-                android:hint="@string/sign_up_screen_password"
+                android:hint="@string/profile_screen_description"
                 android:layout_marginBottom="@dimen/app_primary_margin"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/clCreateAccount"
+                android:id="@+id/clUpdateAccount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/app_secondary_margin"
                 android:background="@drawable/app_primary_button">
 
                 <TextView
-                    android:id="@+id/tvCreateAccount"
+                    android:id="@+id/tvUpdateAccount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
@@ -94,7 +93,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:layout_marginVertical="@dimen/app_secondary_margin"
-                    android:text="@string/sign_up_screen_create_account"
+                    android:text="@string/profile_screen_update_account"
                     android:textSize="@dimen/sign_up_screen_body_text_size"
                     android:fontFamily="@font/alegreya_sans"
                     android:textStyle="bold"

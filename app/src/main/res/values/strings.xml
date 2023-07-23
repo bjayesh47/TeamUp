@@ -34,6 +34,12 @@
     <string name="sign_in_screen_create_account">Sign In</string>
     <string name="sign_in_screen_toolbar_title">Sign In</string>
 
+    <string name="profile_screen_name">Name</string>
+    <string name="profile_screen_email">Email</string>
+    <string name="profile_screen_description">Description</string>
+    <string name="profile_screen_update_account">Update</string>
+    <string name="profile_screen_toolbar_title">Edit Profile</string>
+
     <string name="nav_drawer_profile_title">My Profile</string>
     <string name="nav_drawer_sign_out_title">Sign Out</string>
 </resources>

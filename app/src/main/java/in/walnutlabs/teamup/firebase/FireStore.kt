@@ -1,12 +1,14 @@
 package `in`.walnutlabs.teamup.firebase
 
 import android.util.Log
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.ktx.Firebase
+import `in`.walnutlabs.teamup.activities.BaseActivity
+import `in`.walnutlabs.teamup.activities.MainActivity
+import `in`.walnutlabs.teamup.activities.ProfileActivity
 import `in`.walnutlabs.teamup.activities.SignInActivity
 import `in`.walnutlabs.teamup.activities.SignUpActivity
 import `in`.walnutlabs.teamup.models.User
@@ -27,15 +29,22 @@ class FireStore {
             }
     }
 
-    fun signInUser(activity: SignInActivity) {
+    fun loadUser(activity: BaseActivity) {
         fireStoreInstance.collection(Constants.USERS)
             .document(getCurrentUserID())
             .get()
             .addOnSuccessListener { it ->
                 val loggedInUser: User? = it.toObject(User::class.java)
-                loggedInUser?.let { activity.signInSuccess(loggedInUser) }
+                loggedInUser?.let {
+                    when (activity) {
+                        is SignInActivity -> activity.signInSuccess(loggedInUser)
+                        is MainActivity -> activity.updateUserDetails(loggedInUser)
+                        is ProfileActivity -> activity.loadUser(loggedInUser)
+                    }
+                }
             }
             .addOnFailureListener {
+                activity.hideProgressDialog()
                 Log.e(activity.javaClass.simpleName, "ERROR RETRIEVING FROM FIRESTORE")
             }
     }
