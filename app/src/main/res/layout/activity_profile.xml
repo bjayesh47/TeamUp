@@ -41,9 +41,7 @@
                 android:layout_width="@dimen/profile_screen_image_radius"
                 android:layout_height="@dimen/profile_screen_image_radius"
                 android:layout_marginVertical="@dimen/profile_screen_image_margin_top"
-                app:civ_border_color="@color/app_mid_blue"
-                android:layout_gravity="center_horizontal"
-                app:civ_border_width="@dimen/nav_drawer_profile_pic_border_width" />
+                android:layout_gravity="center_horizontal" />
 
             <EditText
                 android:id="@+id/etNameInput"

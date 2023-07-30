@@ -4,8 +4,11 @@
     <string name="progress_dialog_wait">Please Wait</string>
     <string name="progress_dialog_exit">Press Again To Exit</string>
 
+    <string name="alert_dialog_positive_btn_text">Okay</string>
+
     <string name="toast_exit">Please Click Back Again To Exit</string>
     <string name="toast_account_creation_successful">Account Created Successfully</string>
+    <string name="toast_permission_denied">Permission Denied, Allow It From Settings</string>
 
     <string name="content_description_profile_picture">Profile Picture</string>
 

@@ -1,6 +1,7 @@
 package `in`.walnutlabs.teamup.firebase
 
 import android.util.Log
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -26,6 +27,32 @@ class FireStore {
             }
             .addOnFailureListener {
                 Log.e(activity.javaClass.simpleName, "ERROR WRITING IN FIRESTORE")
+            }
+    }
+
+    fun updateUserProfileData(
+        activity: ProfileActivity,
+        userHashMap: HashMap<String, Any>
+    ) {
+        fireStoreInstance
+            .collection(Constants.USERS)
+            .document(getCurrentUserID())
+            .update(userHashMap)
+            .addOnSuccessListener {
+                Log.e(activity.javaClass.simpleName, "PROFILE DATA UPDATED")
+                Toast.makeText(
+                    activity,
+                    "PROFILE UPDATED SUCCESSFULLY!",
+                    Toast.LENGTH_SHORT
+                ).show()
+                activity.profileUpdateSuccess()
+            }
+            .addOnFailureListener { exception ->
+                Toast.makeText(
+                    activity,
+                    exception.message,
+                    Toast.LENGTH_SHORT
+                ).show()
             }
     }
 
