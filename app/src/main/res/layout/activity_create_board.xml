@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.CreateBoardActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbCreateBoardActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/app_mid_blue"
+        app:title="@string/create_board_screen_toolbar_title"
+        app:titleTextColor="@color/white"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvDetailsCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tbCreateBoardActivity"
+        android:layout_marginTop="@dimen/app_primary_margin"
+        android:layout_marginHorizontal="@dimen/app_primary_margin"
+        android:padding="@dimen/app_secondary_padding"
+        app:cardCornerRadius="@dimen/app_button_radius">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/app_secondary_padding">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civBoardImage"
+                android:layout_width="@dimen/profile_screen_image_radius"
+                android:layout_height="@dimen/profile_screen_image_radius"
+                android:layout_marginVertical="@dimen/profile_screen_image_margin_top"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_glide_placeholder"/>
+
+            <EditText
+                android:id="@+id/etBoardName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:textSize="@dimen/sign_up_screen_body_text_size"
+                android:fontFamily="@font/alegreya_sans"
+                android:hint="@string/create_board_screen_board_name"
+                android:layout_marginBottom="@dimen/app_secondary_margin" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clCreateBoard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/app_secondary_margin"
+                android:background="@drawable/app_primary_button">
+
+                <TextView
+                    android:id="@+id/tvCreateBoard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginVertical="@dimen/app_secondary_margin"
+                    android:text="@string/create_board_screen_create_board_button"
+                    android:textSize="@dimen/sign_up_screen_body_text_size"
+                    android:fontFamily="@font/alegreya_sans"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

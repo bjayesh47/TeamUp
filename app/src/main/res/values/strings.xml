@@ -43,6 +43,12 @@
     <string name="profile_screen_update_account">Update</string>
     <string name="profile_screen_toolbar_title">Edit Profile</string>
 
+    <string name="create_board_screen_toolbar_title">Create Board</string>
+    <string name="create_board_screen_board_name">Board Name</string>
+    <string name="create_board_screen_create_board_button">Create Board</string>
+
+    <string name="main_content_board_availability">No Boards Available</string>
+
     <string name="nav_drawer_profile_title">My Profile</string>
     <string name="nav_drawer_sign_out_title">Sign Out</string>
 </resources>

@@ -32,11 +32,6 @@ import java.io.IOException
 
 class ProfileActivity : BaseActivity() {
 
-    companion object {
-        private const val READ_STORAGE_PERMISSION_CODE: Int = 1
-        private const val PICK_IMAGE_REQUEST_CODE: Int = 2
-    }
-
     private var selectedImageFromDeviceURI: Uri? = null
     private var profileImageURL: String = ""
     private lateinit var userDetails: User
@@ -50,7 +45,7 @@ class ProfileActivity : BaseActivity() {
         FireStore().loadUser(this@ProfileActivity)
 
         findViewById<CircleImageView>(R.id.civProfilePic).setOnClickListener {
-            showImageChooser()
+            Constants.showImageChooser(this@ProfileActivity)
         }
 
         findViewById<ConstraintLayout>(R.id.clUpdateAccount).setOnClickListener {
@@ -93,9 +88,9 @@ class ProfileActivity : BaseActivity() {
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == READ_STORAGE_PERMISSION_CODE) {
+        if (requestCode == Constants.READ_STORAGE_PERMISSION_CODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                showImageChooser()
+                Constants.showImageChooser(this@ProfileActivity)
             }
             else {
                 Toast.makeText(
@@ -107,21 +102,16 @@ class ProfileActivity : BaseActivity() {
         }
     }
 
-    private fun showImageChooser() {
-        val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        startActivityForResult(galleryIntent, PICK_IMAGE_REQUEST_CODE)
-    }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK && requestCode == PICK_IMAGE_REQUEST_CODE && data?.data != null) {
+        if (resultCode == Activity.RESULT_OK && requestCode == Constants.PICK_IMAGE_REQUEST_CODE && data?.data != null) {
             selectedImageFromDeviceURI = data.data
             try {
                 Glide
                     .with(this@ProfileActivity)
                     .load(selectedImageFromDeviceURI)
                     .centerCrop()
-                    .placeholder(R.drawable.ic_user_place_holder)
+                    .placeholder(R.drawable.ic_glide_placeholder)
                     .into(findViewById<CircleImageView>(R.id.civProfilePic))
             }
             catch (exception: IOException) {
@@ -149,7 +139,7 @@ class ProfileActivity : BaseActivity() {
             .with(this@ProfileActivity)
             .load(loggedInUser.image)
             .centerCrop()
-            .placeholder(R.drawable.ic_user_place_holder_grey)
+            .placeholder(R.drawable.ic_glide_placeholder)
             .into(findViewById<CircleImageView>(R.id.civProfilePic))
 
         findViewById<EditText>(R.id.etNameInput).setText(loggedInUser.name)
@@ -187,7 +177,7 @@ class ProfileActivity : BaseActivity() {
         if (selectedImageFromDeviceURI != null) {
             val storageReference: StorageReference = FirebaseStorage.getInstance().reference.child(
                 "USER_IMAGE" + System.currentTimeMillis()
-                        + "." + getFileExtension(selectedImageFromDeviceURI)
+                        + "." + Constants.getFileExtension(this@ProfileActivity, selectedImageFromDeviceURI)
             )
 
             storageReference.putFile(selectedImageFromDeviceURI!!)
@@ -213,14 +203,9 @@ class ProfileActivity : BaseActivity() {
         }
     }
 
-    private fun getFileExtension(uri: Uri?): String? {
-        return MimeTypeMap
-            .getSingleton()
-            .getExtensionFromMimeType(contentResolver.getType(uri!!))
-    }
-
     fun profileUpdateSuccess() {
         hideProgressDialog()
+        setResult(Activity.RESULT_OK)
         finish()
     }
 }

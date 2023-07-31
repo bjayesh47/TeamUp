@@ -2,16 +2,19 @@ package `in`.walnutlabs.teamup.firebase
 
 import android.util.Log
 import android.widget.Toast
+import androidx.browser.browseractions.BrowserActionsIntent.BrowserActionsItemId
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.ktx.Firebase
 import `in`.walnutlabs.teamup.activities.BaseActivity
+import `in`.walnutlabs.teamup.activities.CreateBoardActivity
 import `in`.walnutlabs.teamup.activities.MainActivity
 import `in`.walnutlabs.teamup.activities.ProfileActivity
 import `in`.walnutlabs.teamup.activities.SignInActivity
 import `in`.walnutlabs.teamup.activities.SignUpActivity
+import `in`.walnutlabs.teamup.models.Board
 import `in`.walnutlabs.teamup.models.User
 import `in`.walnutlabs.teamup.utils.Constants
 
@@ -27,6 +30,51 @@ class FireStore {
             }
             .addOnFailureListener {
                 Log.e(activity.javaClass.simpleName, "ERROR WRITING IN FIRESTORE")
+            }
+    }
+
+    fun registerBoard(activity: CreateBoardActivity, board: Board) {
+        fireStoreInstance.collection(Constants.BOARDS)
+            .document()
+            .set(board, SetOptions.merge())
+            .addOnSuccessListener {
+                Toast.makeText(
+                    activity,
+                    "Board Created Successfully",
+                    Toast.LENGTH_SHORT
+                ).show()
+                activity.boardCreatedSuccessfully()
+            }
+            .addOnFailureListener { exception ->
+                Toast.makeText(
+                    activity,
+                    exception.message,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+    }
+
+    fun getBoardList(activity: MainActivity) {
+        fireStoreInstance
+            .collection(Constants.BOARDS)
+            .whereArrayContains(Constants.ASSIGNED_TO, getCurrentUserID())
+            .get()
+            .addOnSuccessListener { document ->
+                Log.i(activity.javaClass.simpleName, document.documents.toString())
+                val boardList: ArrayList<Board> = ArrayList()
+
+                for (i in document.documents) {
+                    val board: Board = i.toObject(Board::class.java)!!
+                    board.documentID = i.id
+                    boardList.add(board)
+                }
+
+                activity.populateListToUI(boardList)
+            }
+            .addOnFailureListener {
+                it.message?.let {
+                    activity.showErrorSnackBar(it)
+                }
             }
     }
 
