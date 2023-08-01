@@ -6,13 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingTop="@dimen/app_primary_padding"
-    android:paddingHorizontal="@dimen/app_primary_padding"
     android:background="?android:attr/selectableItemBackground">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/civBoardPic"
         android:layout_width="@dimen/main_content_board_pic_size"
         android:layout_height="@dimen/main_content_board_pic_size"
+        android:layout_marginStart="@dimen/app_primary_margin"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,5 +42,14 @@
         android:textSize="@dimen/main_content_text_size"
         android:textColor="@color/app_secondary_text_color"
         tools:text="Created By Jayesh"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_color"
+        android:layout_marginTop="@dimen/app_secondary_margin"
+        app:layout_constraintTop_toBottomOf="@id/civBoardPic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

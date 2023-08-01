@@ -104,7 +104,7 @@ class FireStore {
             }
     }
 
-    fun loadUser(activity: BaseActivity) {
+    fun loadUser(activity: BaseActivity, readBoardList: Boolean = false) {
         fireStoreInstance.collection(Constants.USERS)
             .document(getCurrentUserID())
             .get()
@@ -113,7 +113,7 @@ class FireStore {
                 loggedInUser?.let {
                     when (activity) {
                         is SignInActivity -> activity.signInSuccess(loggedInUser)
-                        is MainActivity -> activity.updateUserDetails(loggedInUser)
+                        is MainActivity -> activity.updateUserDetails(loggedInUser, readBoardList)
                         is ProfileActivity -> activity.loadUser(loggedInUser)
                     }
                 }

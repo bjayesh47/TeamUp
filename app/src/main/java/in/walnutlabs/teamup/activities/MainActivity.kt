@@ -31,13 +31,13 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     private lateinit var username: String
     companion object {
         const val PROFILE_REQUEST_CODE: Int = 1
-        const val CREATE_BOARD_REQUEST: Int = 2
+        const val CREATE_BOARD_REQUEST_CODE: Int = 2
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setupActionBar()
-        FireStore().loadUser(this@MainActivity)
+        FireStore().loadUser(this@MainActivity, true)
 
         findViewById<NavigationView>(R.id.nv).setNavigationItemSelectedListener(this)
 
@@ -45,7 +45,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             if (this::username.isInitialized) {
                 val intent: Intent = Intent(this@MainActivity, CreateBoardActivity::class.java)
                 intent.putExtra(Constants.NAME, username)
-                startActivityForResult(intent, CREATE_BOARD_REQUEST)
+                startActivityForResult(intent, CREATE_BOARD_REQUEST_CODE)
             }
             else {
                 Toast.makeText(
@@ -61,18 +61,25 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     fun populateListToUI(list: ArrayList<Board>) {
         hideProgressDialog()
         if (list.size > 0) {
-            findViewById<RecyclerView>(R.id.tvNoBoardsAvailable).visibility = View.GONE
+            findViewById<TextView>(R.id.tvNoBoardsAvailable).visibility = View.GONE
 
             with (findViewById<RecyclerView>(R.id.rvBoardsList)) {
                 visibility = View.VISIBLE
                 layoutManager = LinearLayoutManager(this@MainActivity)
                 setHasFixedSize(true)
-                adapter = BoardsItemAdapter(this@MainActivity, list)
+                val adapter: BoardsItemAdapter = BoardsItemAdapter(this@MainActivity, list)
+                this.adapter = adapter
+                adapter.setOnClickListener(object: BoardsItemAdapter.OnClickListener {
+                    override fun onClick(position: Int, model: Board) {
+                        val intent: Intent = Intent(this@MainActivity, TaskListActivity::class.java)
+                        startActivity(intent)
+                    }
+                })
             }
         }
         else {
             findViewById<RecyclerView>(R.id.rvBoardsList).visibility = View.GONE
-            findViewById<RecyclerView>(R.id.tvNoBoardsAvailable).visibility = View.VISIBLE
+            findViewById<TextView>(R.id.tvNoBoardsAvailable).visibility = View.VISIBLE
         }
     }
 
@@ -101,8 +108,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK && resultCode == PROFILE_REQUEST_CODE) {
-            FireStore().loadUser(this@MainActivity)
+        if (resultCode == Activity.RESULT_OK) {
+            when (requestCode) {
+                PROFILE_REQUEST_CODE -> FireStore().loadUser(this@MainActivity)
+                CREATE_BOARD_REQUEST_CODE -> FireStore().getBoardList(this@MainActivity)
+            }
         }
         else {
             Log.e("Cancelled", "Cancelled")
@@ -127,8 +137,9 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         return true
     }
 
-    fun updateUserDetails(loggedInUser: User) {
+    fun updateUserDetails(loggedInUser: User, readBoardList: Boolean) {
         username = loggedInUser.name
+
         Glide
             .with(this@MainActivity)
             .load(loggedInUser.image)
@@ -136,5 +147,10 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             .placeholder(R.drawable.ic_user_place_holder)
             .into(findViewById<CircleImageView>(R.id.civProfilePic))
         findViewById<TextView>(R.id.tvProfileName).text = loggedInUser.name
+
+        if (readBoardList) {
+            showProgressDialog(resources.getString(R.string.progress_dialog_wait))
+            FireStore().getBoardList(this@MainActivity)
+        }
     }
 }
