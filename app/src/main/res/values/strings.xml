@@ -51,6 +51,8 @@
     <string name="task_list_screen_add_card">Add Card</string>
     <string name="task_list_screen_task_list_name_hint">Task List Name</string>
     <string name="task_list_screen_card_name_hint">Card Name</string>
+    <string name="task_list_non_empty_name_toast">Task List Name Can\'t Be Empty</string>
+    <string name="card_empty_name_toast">Task List Name Can\'t Be Empty</string>
 
     <string name="main_content_board_availability">No Boards Available</string>
 

@@ -12,234 +12,272 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tvAddTaskList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:padding="@dimen/app_secondary_padding"
-            android:background="?attr/selectableItemBackground"
-            android:text="@string/task_list_screen_add_list"
-            android:fontFamily="@font/alegreya_sans"
-            android:textColor="@color/app_mid_blue"
-            android:textStyle="bold"
-            android:textSize="@dimen/task_list_screen_primary_text_size"
-            android:gravity="center_horizontal"
-            android:visibility="gone"
-            tools:visibility="visible"/>
-
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clAddTaskList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tvAddTaskList"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:visibility="gone"
-            tools:visibility="visible">
-
-            <ImageButton
-                android:id="@+id/ibClose"
-                android:layout_width="@dimen/task_list_screen_close_button_size"
-                android:layout_height="@dimen/task_list_screen_close_button_size"
-                android:src="@drawable/ic_close"
-                android:background="?attr/selectableItemBackground"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageButton
-                android:id="@+id/ibCheck"
-                android:layout_width="@dimen/task_list_screen_close_button_size"
-                android:layout_height="@dimen/task_list_screen_close_button_size"
-                android:src="@drawable/ic_check"
-                android:background="?attr/selectableItemBackground"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_constraintStart_toEndOf="@id/ibClose"
-                app:layout_constraintEnd_toStartOf="@id/ibCheck"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:hint="@string/task_list_screen_task_list_name_hint"
-                android:fontFamily="@font/alegreya_sans"
-                android:textColor="@color/app_primary_text_color"
-                android:textSize="@dimen/task_list_screen_secondary_text_size"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clTaskListHeader"
+            android:id="@+id/clTaskListAddition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/clAddTaskList"
-            android:visibility="gone"
-            tools:visibility="visible">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:layout_width="0dp"
+                android:id="@+id/tvAddTaskList"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/ibEdit"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginStart="@dimen/app_primary_margin"
-                tools:text="Temporary Task"
-                android:fontFamily="@font/alegreya_sans"
-                android:textColor="@color/app_primary_text_color"
-                android:textSize="@dimen/task_list_screen_primary_text_size"/>
-
-            <ImageButton
-                android:id="@+id/ibEdit"
-                android:layout_width="@dimen/task_list_screen_close_button_size"
-                android:layout_height="@dimen/task_list_screen_close_button_size"
-                android:src="@drawable/ic_edit"
-                android:background="?attr/selectableItemBackground"
-                app:layout_constraintEnd_toStartOf="@id/ibDelete"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-
-            <ImageButton
-                android:id="@+id/ibDelete"
-                android:layout_width="@dimen/task_list_screen_close_button_size"
-                android:layout_height="@dimen/task_list_screen_close_button_size"
-                android:src="@drawable/ic_delete"
-                android:background="?attr/selectableItemBackground"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                android:padding="@dimen/app_secondary_padding"
+                android:background="?attr/selectableItemBackground"
+                android:text="@string/task_list_screen_add_list"
+                android:fontFamily="@font/alegreya_sans"
+                android:textColor="@color/app_mid_blue"
+                android:textStyle="bold"
+                android:textSize="@dimen/task_list_screen_primary_text_size"
+                android:gravity="center_horizontal"
+                android:visibility="visible" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clAddTaskList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tvAddTaskList"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:visibility="gone">
+
+                <ImageButton
+                    android:id="@+id/ibCloseAddList"
+                    android:layout_width="@dimen/task_list_screen_close_button_size"
+                    android:layout_height="@dimen/task_list_screen_close_button_size"
+                    android:src="@drawable/ic_close"
+                    android:background="?attr/selectableItemBackground"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/ibCheckAddList"
+                    android:layout_width="@dimen/task_list_screen_close_button_size"
+                    android:layout_height="@dimen/task_list_screen_close_button_size"
+                    android:src="@drawable/ic_check"
+                    android:background="?attr/selectableItemBackground"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <EditText
+                    android:id="@+id/etTaskListNameInput"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintStart_toEndOf="@id/ibCloseAddList"
+                    app:layout_constraintEnd_toStartOf="@id/ibCheckAddList"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:hint="@string/task_list_screen_task_list_name_hint"
+                    android:fontFamily="@font/alegreya_sans"
+                    android:textColor="@color/app_primary_text_color"
+                    android:textSize="@dimen/task_list_screen_secondary_text_size"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <View
-            android:id="@+id/vDivider"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/clTaskListHeader"
-            android:background="@color/divider_color"
-            android:visibility="gone"
-            tools:visibility="visible"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clEditTaskList"
+            android:id="@+id/clCardListAddition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/vDivider"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:visibility="gone"
-            tools:visibility="visible">
+            app:layout_constraintTop_toBottomOf="@id/clTaskListAddition">
 
-            <ImageButton
-                android:id="@+id/ibEditClose"
-                android:layout_width="@dimen/task_list_screen_close_button_size"
-                android:layout_height="@dimen/task_list_screen_close_button_size"
-                android:src="@drawable/ic_close"
-                android:background="?attr/selectableItemBackground"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageButton
-                android:id="@+id/ibEditCheck"
-                android:layout_width="@dimen/task_list_screen_close_button_size"
-                android:layout_height="@dimen/task_list_screen_close_button_size"
-                android:src="@drawable/ic_check"
-                android:background="?attr/selectableItemBackground"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_constraintStart_toEndOf="@id/ibEditClose"
-                app:layout_constraintEnd_toStartOf="@id/ibEditCheck"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clTaskListHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:hint="@string/task_list_screen_task_list_name_hint"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clTaskListName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/tvTaskListName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/ibEditTaskListName"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginStart="@dimen/app_primary_margin"
+                        tools:text="Temporary Task"
+                        android:fontFamily="@font/alegreya_sans"
+                        android:textColor="@color/app_primary_text_color"
+                        android:textSize="@dimen/task_list_screen_primary_text_size"/>
+
+                    <ImageButton
+                        android:id="@+id/ibEditTaskListName"
+                        android:layout_width="@dimen/task_list_screen_close_button_size"
+                        android:layout_height="@dimen/task_list_screen_close_button_size"
+                        android:src="@drawable/ic_edit"
+                        android:background="?attr/selectableItemBackground"
+                        app:layout_constraintEnd_toStartOf="@id/ibDeleteTaskList"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <ImageButton
+                        android:id="@+id/ibDeleteTaskList"
+                        android:layout_width="@dimen/task_list_screen_close_button_size"
+                        android:layout_height="@dimen/task_list_screen_close_button_size"
+                        android:src="@drawable/ic_delete"
+                        android:background="?attr/selectableItemBackground"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clEditTaskList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:visibility="gone">
+
+                    <ImageButton
+                        android:id="@+id/ibEditChangeClose"
+                        android:layout_width="@dimen/task_list_screen_close_button_size"
+                        android:layout_height="@dimen/task_list_screen_close_button_size"
+                        android:src="@drawable/ic_close"
+                        android:background="?attr/selectableItemBackground"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageButton
+                        android:id="@+id/ibEditChangeCheck"
+                        android:layout_width="@dimen/task_list_screen_close_button_size"
+                        android:layout_height="@dimen/task_list_screen_close_button_size"
+                        android:src="@drawable/ic_check"
+                        android:background="?attr/selectableItemBackground"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <EditText
+                        android:id="@+id/etTaskListNameChangeInput"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintStart_toEndOf="@id/ibEditChangeClose"
+                        app:layout_constraintEnd_toStartOf="@id/ibEditChangeCheck"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:hint="@string/task_list_screen_task_list_name_hint"
+                        android:fontFamily="@font/alegreya_sans"
+                        android:textColor="@color/app_primary_text_color"
+                        android:textSize="@dimen/task_list_screen_secondary_text_size"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:id="@+id/vDividerA"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:background="@color/divider_color"
+                    android:visibility="visible"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCardList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/app_secondary_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/clTaskListHeader"
+                android:visibility="gone"
+                tools:visibility="visible"/>
+
+            <View
+                android:id="@+id/vDividerB"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rvCardList"
+                android:background="@color/divider_color"
+                android:visibility="visible"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clEditCardList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/vDividerB"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:visibility="gone">
+
+                <ImageButton
+                    android:id="@+id/ibEditCardClose"
+                    android:layout_width="@dimen/task_list_screen_close_button_size"
+                    android:layout_height="@dimen/task_list_screen_close_button_size"
+                    android:src="@drawable/ic_close"
+                    android:background="?attr/selectableItemBackground"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/ibEditCardCheck"
+                    android:layout_width="@dimen/task_list_screen_close_button_size"
+                    android:layout_height="@dimen/task_list_screen_close_button_size"
+                    android:src="@drawable/ic_check"
+                    android:background="?attr/selectableItemBackground"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <EditText
+                    android:id="@+id/etCarNameInput"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintStart_toEndOf="@id/ibEditCardClose"
+                    app:layout_constraintEnd_toStartOf="@id/ibEditCardCheck"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:hint="@string/task_list_screen_card_name_hint"
+                    android:fontFamily="@font/alegreya_sans"
+                    android:textColor="@color/app_primary_text_color"
+                    android:textSize="@dimen/task_list_screen_secondary_text_size"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tvAddCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/clEditCardList"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:padding="@dimen/app_secondary_padding"
+                android:background="?attr/selectableItemBackground"
+                android:text="@string/task_list_screen_add_card"
                 android:fontFamily="@font/alegreya_sans"
-                android:textColor="@color/app_primary_text_color"
-                android:textSize="@dimen/task_list_screen_secondary_text_size"/>
+                android:textColor="@color/app_mid_blue"
+                android:textStyle="bold"
+                android:textSize="@dimen/task_list_screen_primary_text_size"
+                android:gravity="center_horizontal"
+                android:visibility="visible"
+                tools:visibility="visible"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvCardList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/app_secondary_margin"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/clEditTaskList"
-            android:visibility="gone"
-            tools:visibility="visible"/>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clEditCardList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/rvCardList"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:visibility="gone"
-            tools:visibility="visible">
-
-            <ImageButton
-                android:id="@+id/ibEditCardClose"
-                android:layout_width="@dimen/task_list_screen_close_button_size"
-                android:layout_height="@dimen/task_list_screen_close_button_size"
-                android:src="@drawable/ic_close"
-                android:background="?attr/selectableItemBackground"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageButton
-                android:id="@+id/ibEditCardCheck"
-                android:layout_width="@dimen/task_list_screen_close_button_size"
-                android:layout_height="@dimen/task_list_screen_close_button_size"
-                android:src="@drawable/ic_check"
-                android:background="?attr/selectableItemBackground"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_constraintStart_toEndOf="@id/ibEditCardClose"
-                app:layout_constraintEnd_toStartOf="@id/ibEditCardCheck"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:hint="@string/task_list_screen_card_name_hint"
-                android:fontFamily="@font/alegreya_sans"
-                android:textColor="@color/app_primary_text_color"
-                android:textSize="@dimen/task_list_screen_secondary_text_size"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <TextView
-            android:id="@+id/tvAddCard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/clEditCardList"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:padding="@dimen/app_secondary_padding"
-            android:background="?attr/selectableItemBackground"
-            android:text="@string/task_list_screen_add_card"
-            android:fontFamily="@font/alegreya_sans"
-            android:textColor="@color/app_mid_blue"
-            android:textStyle="bold"
-            android:textSize="@dimen/task_list_screen_primary_text_size"
-            android:gravity="center_horizontal"
-            android:visibility="gone"
-            tools:visibility="visible"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

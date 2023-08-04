@@ -10,6 +10,8 @@ import `in`.walnutlabs.teamup.activities.CreateBoardActivity
 object Constants {
     const val USERS: String = "users"
     const val BOARDS: String = "boards"
+    const val TASK_LIST: String = "taskList"
+    const val CARDS: String = "cards"
 
     const val NAME: String = "name"
     const val BIO: String = "bio"

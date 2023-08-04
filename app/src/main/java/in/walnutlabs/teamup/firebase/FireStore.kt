@@ -140,11 +140,32 @@ class FireStore {
             .get()
             .addOnSuccessListener { document ->
                 Log.i(activity.javaClass.simpleName, document.toString())
-                activity.boardDetails(document.toObject(Board::class.java)!!)
+
+                val board: Board = document.toObject(Board::class.java)!!
+                board.documentID = document.id
+
+                activity.boardDetails(board)
             }
             .addOnFailureListener {
                 activity.hideProgressDialog()
                 Log.e(activity.javaClass.simpleName, "ERROR RETRIEVING FROM FIRESTORE")
+            }
+    }
+
+    fun addUpdateTaskListActivity(activity: TaskListActivity, board: Board) {
+        val taskListHashMap: HashMap<String, Any> = HashMap()
+        taskListHashMap[Constants.TASK_LIST] = board.taskList
+
+        fireStoreInstance.collection(Constants.BOARDS)
+            .document(board.documentID)
+            .update(taskListHashMap)
+            .addOnSuccessListener {
+                Log.i(activity.javaClass.simpleName, "Board Updated")
+                activity.addUpdateTaskListSuccess()
+            }
+            .addOnFailureListener { exception ->
+                activity.hideProgressDialog()
+                Log.e(activity.javaClass.simpleName, exception.message.toString())
             }
     }
 }
