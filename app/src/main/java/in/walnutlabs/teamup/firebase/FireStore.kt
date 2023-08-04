@@ -14,6 +14,7 @@ import `in`.walnutlabs.teamup.activities.MainActivity
 import `in`.walnutlabs.teamup.activities.ProfileActivity
 import `in`.walnutlabs.teamup.activities.SignInActivity
 import `in`.walnutlabs.teamup.activities.SignUpActivity
+import `in`.walnutlabs.teamup.activities.TaskListActivity
 import `in`.walnutlabs.teamup.models.Board
 import `in`.walnutlabs.teamup.models.User
 import `in`.walnutlabs.teamup.utils.Constants
@@ -131,5 +132,19 @@ class FireStore {
             currentUserID = it.uid
         }
         return currentUserID
+    }
+
+    fun getBoardDetails(activity: TaskListActivity, boardDocumentID: String) {
+        fireStoreInstance.collection(Constants.BOARDS)
+            .document(boardDocumentID)
+            .get()
+            .addOnSuccessListener { document ->
+                Log.i(activity.javaClass.simpleName, document.toString())
+                activity.boardDetails(document.toObject(Board::class.java)!!)
+            }
+            .addOnFailureListener {
+                activity.hideProgressDialog()
+                Log.e(activity.javaClass.simpleName, "ERROR RETRIEVING FROM FIRESTORE")
+            }
     }
 }

@@ -47,7 +47,10 @@
     <string name="create_board_screen_board_name">Board Name</string>
     <string name="create_board_screen_create_board_button">Create Board</string>
 
-    <string name="task_list_screen_toolbar_title">Tasks</string>
+    <string name="task_list_screen_add_list">Add List</string>
+    <string name="task_list_screen_add_card">Add Card</string>
+    <string name="task_list_screen_task_list_name_hint">Task List Name</string>
+    <string name="task_list_screen_card_name_hint">Card Name</string>
 
     <string name="main_content_board_availability">No Boards Available</string>
 
