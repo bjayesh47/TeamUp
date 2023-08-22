@@ -1,5 +1,6 @@
 ## About TeamUp
 Project Management App :- An Android App that helps keep track of various projects among stakeholders by dividing a Project into Task List, and Task List Into Various Cards
+Authentication, Database & Storage is done with Firebase
 
 ## Built With 🛠
 - [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
