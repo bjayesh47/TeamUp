@@ -29,7 +29,15 @@
 
     <dimen name="task_list_screen_primary_text_size">20sp</dimen>
     <dimen name="task_list_screen_secondary_text_size">16sp</dimen>
+    <dimen name="task_list_screen_tertiary_text_size">12sp</dimen>
     <dimen name="task_list_screen_close_button_size">48dp</dimen>
+    
+    <dimen name="member_list_screen_profile_pic">48dp</dimen>
+    <dimen name="member_list_screen_primary_text_size">20sp</dimen>
+    <dimen name="member_list_screen_secondary_text_size">16sp</dimen>
+
+    <dimen name="search_dialog_primary_text_size">20sp</dimen>
+    <dimen name="search_dialog_secondary_text_size">16sp</dimen>
 
     <dimen name="app_button_radius">12dp</dimen>
     <dimen name="app_primary_margin">16dp</dimen>

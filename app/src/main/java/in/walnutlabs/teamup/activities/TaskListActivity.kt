@@ -1,11 +1,20 @@
 package `in`.walnutlabs.teamup.activities
 
+import android.app.Activity
+import android.content.Intent
+import android.graphics.PorterDuff
+import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.iterator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import `in`.walnutlabs.teamup.R
+import `in`.walnutlabs.teamup.adapters.MembersActivity
 import `in`.walnutlabs.teamup.adapters.TaskListAdapter
 import `in`.walnutlabs.teamup.firebase.FireStore
 import `in`.walnutlabs.teamup.models.Board
@@ -16,17 +25,42 @@ import `in`.walnutlabs.teamup.utils.Constants
 class TaskListActivity : BaseActivity() {
 
     private lateinit var boardDetails: Board
+    private lateinit var boardDocumentID: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task_list)
 
-        var boardDocumentID: String = ""
         if (intent.hasExtra(Constants.DOCUMENT_ID)) {
             boardDocumentID = intent.getStringExtra(Constants.DOCUMENT_ID).toString()
         }
 
         showProgressDialog(resources.getString(R.string.progress_dialog_wait))
         FireStore().getBoardDetails(this@TaskListActivity, boardDocumentID)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.activity_task_list_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.actionShowMembers -> {
+                val intent: Intent = Intent(this@TaskListActivity, MembersActivity::class.java)
+                intent.putExtra(Constants.BOARD_DETAILS, boardDetails)
+                startActivityForResult(intent, MEMBERS_REQUEST_CODE)
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK && requestCode == MEMBERS_REQUEST_CODE) {
+            showProgressDialog(resources.getString(R.string.progress_dialog_wait))
+            FireStore().getBoardDetails(this@TaskListActivity, boardDocumentID)
+        }
     }
 
     private fun setUpActionBar() {
@@ -118,5 +152,9 @@ class TaskListActivity : BaseActivity() {
 
         showProgressDialog(resources.getString(R.string.progress_dialog_wait))
         FireStore().addUpdateTaskListActivity(this@TaskListActivity, boardDetails)
+    }
+
+    companion object {
+        const val MEMBERS_REQUEST_CODE: Int = 15
     }
 }

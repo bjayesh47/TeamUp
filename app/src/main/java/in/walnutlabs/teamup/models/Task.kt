@@ -18,6 +18,7 @@ data class Task(
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(title)
         parcel.writeString(createdBy)
+        parcel.writeTypedList(cards)
     }
 
     override fun describeContents(): Int {

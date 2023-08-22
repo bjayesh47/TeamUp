@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".adapters.MembersActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbMembersActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/app_mid_blue"
+        app:title="@string/member_list_screen_title"
+        app:titleTextColor="@color/white"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvMemeberList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tbMembersActivity"
+        android:layout_marginTop="@dimen/app_primary_margin"
+        android:layout_marginHorizontal="@dimen/app_primary_margin"
+        android:padding="@dimen/app_secondary_padding"
+        app:cardCornerRadius="@dimen/app_button_radius">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMemberList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

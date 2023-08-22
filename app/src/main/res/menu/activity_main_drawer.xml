@@ -5,6 +5,7 @@
         <item
             android:id="@+id/menuMyProfile"
             android:icon="@drawable/ic_profile_details"
+            android:iconTint="@color/app_mid_blue"
             android:title="@string/nav_drawer_profile_title" />
         <item
             android:id="@+id/menuSignOut"

@@ -11,6 +11,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import `in`.walnutlabs.teamup.R
 import `in`.walnutlabs.teamup.activities.TaskListActivity
@@ -73,7 +74,7 @@ open class TaskListAdapter(
                     else {
                         Toast.makeText(
                             context,
-                            resources.getString(R.string.task_list_non_empty_name_toast),
+                            resources.getString(R.string.toast_task_list_empty_name),
                             Toast.LENGTH_SHORT
                         ).show()
                     }
@@ -111,7 +112,7 @@ open class TaskListAdapter(
                     else {
                         Toast.makeText(
                             context,
-                            resources.getString(R.string.task_list_non_empty_name_toast),
+                            resources.getString(R.string.toast_task_list_empty_name),
                             Toast.LENGTH_SHORT
                         ).show()
                     }
@@ -131,7 +132,7 @@ open class TaskListAdapter(
                 }
 
                 findViewById<ImageButton>(R.id.ibEditCardCheck).setOnClickListener {
-                    val cardName: String = findViewById<EditText>(R.id.etCarNameInput).text.toString()
+                    val cardName: String = findViewById<EditText>(R.id.etCardNameInput).text.toString()
 
                     if (cardName.isNotEmpty()) {
                         if (context is TaskListActivity ) {
@@ -143,11 +144,17 @@ open class TaskListAdapter(
                     else {
                         Toast.makeText(
                             context,
-                            resources.getString(R.string.card_empty_name_toast),
+                            resources.getString(R.string.toast_card_empty_name),
                             Toast.LENGTH_SHORT
                         ).show()
                     }
                 }
+
+                findViewById<RecyclerView>(R.id.rvCardList).visibility = View.VISIBLE
+                findViewById<RecyclerView>(R.id.rvCardList).layoutManager= LinearLayoutManager(context)
+                findViewById<RecyclerView>(R.id.rvCardList).setHasFixedSize(true)
+                findViewById<RecyclerView>(R.id.rvCardList).adapter = CardListItemAdapter(context, model.cards)
+
             }
         }
     }

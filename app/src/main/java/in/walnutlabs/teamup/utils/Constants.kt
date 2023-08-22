@@ -12,10 +12,13 @@ object Constants {
     const val BOARDS: String = "boards"
     const val TASK_LIST: String = "taskList"
     const val CARDS: String = "cards"
+    const val BOARD_DETAILS: String  = "boardDetails"
 
     const val NAME: String = "name"
     const val BIO: String = "bio"
     const val IMAGE: String = "image"
+    const val ID: String = "id"
+    const val EMAIL: String = "email"
 
     const val ASSIGNED_TO: String = "assignedTo"
     const val DOCUMENT_ID: String = "documentID"

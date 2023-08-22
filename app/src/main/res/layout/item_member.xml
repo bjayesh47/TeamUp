@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/app_secondary_padding">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/civProfilePic"
+        android:layout_width="@dimen/member_list_screen_profile_pic"
+        android:layout_height="@dimen/member_list_screen_profile_pic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvMemberName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/civProfilePic"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="@dimen/app_primary_margin"
+        tools:text="Jayesh"
+        android:textColor="@color/app_primary_text_color"
+        android:textSize="@dimen/member_list_screen_primary_text_size"
+        android:fontFamily="@font/alegreya_sans"/>
+
+    <TextView
+        android:id="@+id/tvMemberEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/civProfilePic"
+        app:layout_constraintTop_toBottomOf="@id/tvMemberName"
+        android:layout_marginStart="@dimen/app_primary_margin"
+        tools:text="jayesbatra47@gmail.com"
+        android:textColor="@color/app_secondary_text_color"
+        android:textSize="@dimen/member_list_screen_secondary_text_size"
+        android:fontFamily="@font/alegreya_sans"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

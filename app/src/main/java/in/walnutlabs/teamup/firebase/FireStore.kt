@@ -15,6 +15,7 @@ import `in`.walnutlabs.teamup.activities.ProfileActivity
 import `in`.walnutlabs.teamup.activities.SignInActivity
 import `in`.walnutlabs.teamup.activities.SignUpActivity
 import `in`.walnutlabs.teamup.activities.TaskListActivity
+import `in`.walnutlabs.teamup.adapters.MembersActivity
 import `in`.walnutlabs.teamup.models.Board
 import `in`.walnutlabs.teamup.models.User
 import `in`.walnutlabs.teamup.utils.Constants
@@ -166,6 +167,61 @@ class FireStore {
             .addOnFailureListener { exception ->
                 activity.hideProgressDialog()
                 Log.e(activity.javaClass.simpleName, exception.message.toString())
+            }
+    }
+
+    fun getAssignedMemberList(activity: MembersActivity, assignedTo: ArrayList<String>) {
+        fireStoreInstance.collection(Constants.USERS)
+            .whereIn(Constants.ID, assignedTo)
+            .get()
+            .addOnSuccessListener { document->
+                Log.e(activity.javaClass.simpleName, document.documents.toString())
+                val userList: ArrayList<User> = ArrayList()
+                for (i in document.documents) {
+                    val user: User = i.toObject(User::class.java)!!
+                    userList.add(user)
+                }
+                activity.setUpMemberList(userList)
+            }
+            .addOnFailureListener {
+                activity.hideProgressDialog()
+                Log.e(activity.javaClass.simpleName, it.message.toString())
+            }
+    }
+
+    fun getMemberDetails(activity: MembersActivity, email: String) {
+        fireStoreInstance.collection(Constants.USERS)
+            .whereEqualTo(Constants.EMAIL, email)
+            .get()
+            .addOnSuccessListener { document ->
+                if (document.documents.size > 0) {
+                    val user: User = document.documents[0].toObject(User::class.java)!!
+                    activity.memberDetails(user)
+                }
+                else {
+                    activity.hideProgressDialog()
+                    activity.showErrorSnackBar("No Such Member Found")
+                }
+            }
+            .addOnFailureListener {
+                activity.hideProgressDialog()
+                Log.e(activity.javaClass.simpleName, it.message.toString())
+            }
+    }
+
+    fun assignMembersToBoard(activity: MembersActivity, board: Board, user: User) {
+        val boardHashMap: HashMap<String, Any> = HashMap()
+        boardHashMap[Constants.ASSIGNED_TO] = board.assignedTo
+
+        fireStoreInstance.collection(Constants.BOARDS)
+            .document(board.documentID)
+            .update(boardHashMap)
+            .addOnSuccessListener {
+                activity.memberAssignSuccess(user)
+            }
+            .addOnFailureListener {
+                activity.hideProgressDialog()
+                Log.e(activity.javaClass.simpleName, "Error While Updating Board")
             }
     }
 }
